@@ -26,13 +26,14 @@ def get_timing_info(c_info):
 
 
 def describe_measurements(measurements):
-    return {
-        'min': min(measurements),
-        'mean': numpy.mean(measurements),
-        'sd': numpy.std(measurements), #[+/-sd]
-        'median': numpy.median(measurements),
-        'max': max(measurements)
+    dct = {
+        'min': min(measurements) * 1000,
+        'mean': numpy.mean(measurements) * 1000,
+        'sd': numpy.std(measurements) * 1000, #[+/-sd]
+        'median': numpy.median(measurements) * 1000,
+        'max': max(measurements) * 1000
     }
+    return dct
 
 
 def connection_times(measurements):
