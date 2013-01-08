@@ -73,7 +73,8 @@ def do_get_request(url):
 # monkey patch PUT support
 def put(self, data):
     self.set_option(pycurl.PUT, 1)
-    self.set_option(pycurl.READFUNCTION, StringIO.StringIO(data).read)
+    self.set_option(pycurl.READFUNCTION,
+        StringIO.StringIO(data).read)
     return self._Curl__request()
 setattr(curl.Curl, 'put', put)
 
@@ -153,7 +154,10 @@ def measure_lookup_components(
         measurements,
         print_latex_table
         ):
-    query_urls = get_actor_list(actor_source=actor_source, limit=uri_count)
+    query_urls = get_actor_list(
+        actor_source=actor_source,
+        limit=uri_count
+    )
     print "Querying {0} actors".format(uri_count)
 
     if print_latex_table:
